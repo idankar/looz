@@ -1,196 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Plan</title>
-    <style>
-        /* BASE STYLES */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', Courier, monospace; /* Typewriter style for drama */
-            background-color: #1a1a1a;
-            color: white;
-            overflow: hidden; /* Prevent scrolling */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            user-select: none;
-        }
+# Weekly Date Plans
 
-        /* CONTAINER */
-        #stage {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            cursor: pointer;
-        }
+A simple, dramatic slideshow for sharing weekly date plans with my girlfriend.
 
-        /* SLIDE STYLES */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            background: linear-gradient(135deg, #ff00cc, #333399); /* Dramatic Gradient */
-        }
+**Live site:** https://idankar.github.io/looz/
 
-        /* ACTIVE SLIDE */
-        .slide.active {
-            opacity: 1;
-            pointer-events: auto;
-            z-index: 10;
-        }
+## How to Update
 
-        /* TEXT STYLING */
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 4px 4px 0px #000;
-        }
-        
-        p {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            background: rgba(0,0,0,0.5);
-            padding: 10px;
-            border-radius: 10px;
-        }
+1. Edit `index.html`
+2. Find the `<div class="slide">` sections
+3. Update the emoji, day name, time, and description
+4. Commit and push - GitHub Pages will auto-deploy
 
-        .emoji {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
+## Slide Structure
 
-        /* HINT TEXT AT BOTTOM */
-        .tap-hint {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            animation: pulse 1s infinite;
-        }
+```html
+<div class="slide" style="background: linear-gradient(to right, #color1, #color2);">
+    <div class="emoji anim-slam">🍕</div>
+    <h1 class="anim-slam">יום שלישי</h1>
+    <p class="anim-slam">19:00<br>תיאור הפעילות</p>
+</div>
+```
 
-        /* --- DRAMATIC ANIMATIONS --- */
+## Animation Types
 
-        /* 1. The Super Zoom Slam */
-        .active .anim-slam {
-            animation: slamEnter 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        /* 2. The Spin Reveal */
-        .active .anim-spin {
-            animation: spinEnter 1s ease-out forwards;
-        }
-
-        /* 3. The Rising Star */
-        .active .anim-rise {
-            animation: riseEnter 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-
-        /* KEYFRAMES */
-        @keyframes slamEnter {
-            0% { transform: scale(5); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes spinEnter {
-            0% { transform: rotate(-720deg) scale(0); opacity: 0; }
-            100% { transform: rotate(0deg) scale(1); opacity: 1; }
-        }
-
-        @keyframes riseEnter {
-            0% { transform: translateY(500px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
-        }
-
-    </style>
-</head>
-<body>
-
-    <div id="stage">
-        
-        <div class="slide active" style="background: #ff416c; background: -webkit-linear-gradient(to right, #ff4b1f, #ff9068);">
-            <div class="emoji anim-slam">🚨</div>
-            <h1 class="anim-slam">היי כפרוני</h1>
-            <p class="anim-slam">התוכניות שלנו לשבוע הן...</p>
-            <div class="tap-hint">(לחצי כאן)</div>
-        </div>
-
-        <div class="slide" style="background: #833ab4; background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);">
-            <div class="emoji anim-spin">🍣</div>
-            <h1 class="anim-spin">יום ראשון</h1>
-            <p class="anim-spin">19:00<br>סופחים סושי.<br>ואז עושים מלא סקס</p>
-        </div>
-
-        <div class="slide" style="background: #00b09b; background: linear-gradient(to right, #96c93d, #00b09b);">
-            <div class="emoji anim-rise">🏋️‍♀️</div>
-            <h1 class="anim-rise">רביעי</h1>
-            <p class="anim-rise">19:00<br>ערב סרט<br>נזמין פיצה. נאכל במיטה כמו כלבים. נעשה סקס אלים</p>
-        </div>
-
-        <div class="slide" style="background: #2193b0; background: linear-gradient(to right, #6dd5ed, #2193b0);">
-            <div class="emoji anim-slam">🍷</div>
-            <h1 class="anim-slam">סופ״ש</h1>
-            <p class="anim-slam">זמן משפחה<br>אולי נעשה הליכות פטוטיות<br>מה שבטוח זה שיהיה מלא מלא סקס</p>
-        </div>
-
-        <div class="slide" style="background: #000;">
-            <div class="emoji anim-spin">👋</div>
-            <h1 class="anim-spin">סוף התדריך</h1>
-            <p class="anim-spin">לאביו<br>ביי כפרוני</p>
-        </div>
-
-    </div>
-
-    <script>
-        const stage = document.getElementById('stage');
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        stage.addEventListener('click', nextSlide);
-        
-        // Also support touch for faster mobile response
-        stage.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // prevents double firing with click
-            nextSlide();
-        });
-
-        function nextSlide() {
-            // Remove active class from current
-            slides[currentSlide].classList.remove('active');
-
-            // Increment index
-            currentSlide++;
-
-            // Check if we reached the end, wrap around to 0
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            }
-
-            // Add active class to new slide
-            slides[currentSlide].classList.add('active');
-        }
-    </script>
-</body>
-</html>
+- `anim-slam` - Zoom in dramatically
+- `anim-spin` - Spin and reveal
+- `anim-rise` - Rise from bottom
